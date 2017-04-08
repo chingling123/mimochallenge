@@ -19,6 +19,12 @@
 		2BF3DF2C1E54B7DF004DD445 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3DF2A1E54B7DF004DD445 /* SettingsViewController.m */; };
 		2BF3DF2D1E54B7DF004DD445 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3DF2B1E54B7DF004DD445 /* SettingsViewController.swift */; };
 		591B2BD4C62D400CB4E39B30 /* Pods_MimoiOSCodingChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA866BE4B2BF25DEA765CAF4 /* Pods_MimoiOSCodingChallengeTests.framework */; };
+		7591B1C31E9947CE00A735F6 /* LSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7591B1C11E9947CE00A735F6 /* LSViewController.swift */; };
+		7591B1C41E9947CE00A735F6 /* LSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7591B1C21E9947CE00A735F6 /* LSViewController.xib */; };
+		7591B1C61E99496C00A735F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7591B1C51E99496C00A735F6 /* UIKit.framework */; };
+		7591B1CA1E994F6D00A735F6 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7591B1C91E994F6D00A735F6 /* APIClient.swift */; };
+		7591B1CD1E9958F600A735F6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7591B1CC1E9958F600A735F6 /* User.swift */; };
+		7591B1CF1E99591900A735F6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7591B1CE1E99591900A735F6 /* Utils.swift */; };
 		B5B57A556C0D6264F7B2EB66 /* Pods_MimoiOSCodingChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4CA2B99159E74AED055510E /* Pods_MimoiOSCodingChallengeUITests.framework */; };
 		BD6E69CAC730DB8A44EDB347 /* Pods_MimoiOSCodingChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0752AC0B1484421C9660620 /* Pods_MimoiOSCodingChallenge.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +72,12 @@
 		2BF3DF2A1E54B7DF004DD445 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		2BF3DF2B1E54B7DF004DD445 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		37560CCE1146D663B5816058 /* Pods-MimoiOSCodingChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MimoiOSCodingChallengeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MimoiOSCodingChallengeUITests/Pods-MimoiOSCodingChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7591B1C11E9947CE00A735F6 /* LSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LSViewController.swift; sourceTree = "<group>"; };
+		7591B1C21E9947CE00A735F6 /* LSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSViewController.xib; sourceTree = "<group>"; };
+		7591B1C51E99496C00A735F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7591B1C91E994F6D00A735F6 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		7591B1CC1E9958F600A735F6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7591B1CE1E99591900A735F6 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		89A14F25BE0F8EB51FFE565C /* Pods-MimoiOSCodingChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MimoiOSCodingChallengeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MimoiOSCodingChallengeUITests/Pods-MimoiOSCodingChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9BFE5D015BD98F7F02DA45C6 /* Pods-MimoiOSCodingChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MimoiOSCodingChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MimoiOSCodingChallenge/Pods-MimoiOSCodingChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		C0752AC0B1484421C9660620 /* Pods_MimoiOSCodingChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MimoiOSCodingChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7591B1C61E99496C00A735F6 /* UIKit.framework in Frameworks */,
 				BD6E69CAC730DB8A44EDB347 /* Pods_MimoiOSCodingChallenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +140,7 @@
 		2BF3DEF41E54B79A004DD445 /* MimoiOSCodingChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				7591B1CB1E9958EA00A735F6 /* Model */,
 				2BF3DEF81E54B79A004DD445 /* AppDelegate.h */,
 				2BF3DEF91E54B79A004DD445 /* AppDelegate.m */,
 				2BF3DEFB1E54B79A004DD445 /* ViewController.h */,
@@ -142,6 +156,10 @@
 				2BF3DF061E54B79A004DD445 /* Info.plist */,
 				2BF3DEF51E54B79A004DD445 /* Supporting Files */,
 				2BF3DF281E54B7DE004DD445 /* MimoiOSCodingChallenge-Bridging-Header.h */,
+				7591B1C11E9947CE00A735F6 /* LSViewController.swift */,
+				7591B1C21E9947CE00A735F6 /* LSViewController.xib */,
+				7591B1C91E994F6D00A735F6 /* APIClient.swift */,
+				7591B1CE1E99591900A735F6 /* Utils.swift */,
 			);
 			path = MimoiOSCodingChallenge;
 			sourceTree = "<group>";
@@ -172,9 +190,18 @@
 			path = MimoiOSCodingChallengeUITests;
 			sourceTree = "<group>";
 		};
+		7591B1CB1E9958EA00A735F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7591B1CC1E9958F600A735F6 /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		8B0B518BCE1225BC9184E2D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7591B1C51E99496C00A735F6 /* UIKit.framework */,
 				C0752AC0B1484421C9660620 /* Pods_MimoiOSCodingChallenge.framework */,
 				FA866BE4B2BF25DEA765CAF4 /* Pods_MimoiOSCodingChallengeTests.framework */,
 				C4CA2B99159E74AED055510E /* Pods_MimoiOSCodingChallengeUITests.framework */,
@@ -316,6 +343,7 @@
 			files = (
 				2BF3DF051E54B79A004DD445 /* LaunchScreen.storyboard in Resources */,
 				2BF3DF021E54B79A004DD445 /* Assets.xcassets in Resources */,
+				7591B1C41E9947CE00A735F6 /* LSViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +513,10 @@
 				2BF3DEF71E54B79A004DD445 /* main.m in Sources */,
 				2BF3DF2D1E54B7DF004DD445 /* SettingsViewController.swift in Sources */,
 				2BF3DF2C1E54B7DF004DD445 /* SettingsViewController.m in Sources */,
+				7591B1CF1E99591900A735F6 /* Utils.swift in Sources */,
+				7591B1C31E9947CE00A735F6 /* LSViewController.swift in Sources */,
+				7591B1CD1E9958F600A735F6 /* User.swift in Sources */,
+				7591B1CA1E994F6D00A735F6 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,8 +657,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9BFE5D015BD98F7F02DA45C6 /* Pods-MimoiOSCodingChallenge.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 352XU3N33J;
 				INFOPLIST_FILE = MimoiOSCodingChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -643,8 +677,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2A002B23F391C3A95BD89B56 /* Pods-MimoiOSCodingChallenge.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 352XU3N33J;
 				INFOPLIST_FILE = MimoiOSCodingChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
