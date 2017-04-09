@@ -6,6 +6,8 @@
 extension SettingsViewController : SettingsTableViewCellDelegate {
 	
 	func switchChangedValue(switcher: UISwitch) {
-		
+		Utils.sharedInstance.setDarkMode(switcher.isOn)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DarkModeNotification"), object: nil)
 	}
 }
+

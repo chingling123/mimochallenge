@@ -53,6 +53,7 @@ static const CGFloat kSettingsStandardRowHeight                 = 48.0;
 static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 
 
+
 @interface SettingsViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -70,6 +71,8 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 @property (nonatomic, strong) UIDatePicker *timePicker;
 @property (nonatomic) BOOL didSetConstraints;
 @property BOOL userSubscribed;
+
+
 @end
 
 @implementation SettingsViewController
@@ -78,7 +81,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [self setupTableSections];
     [self setupTableSectionHeaderTitles];
     [self setupTableSectionRowTitles];
@@ -108,6 +111,8 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDarkModeNotification:) name:@"DarkModeNotification" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -134,6 +139,16 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 	[super updateViewConstraints];
 }
 
+- (void)isDarkModeOn{
+    if ([[Utils sharedInstance] isOnDarkMode]) {
+        self.tableView.backgroundColor = [UIColor blackColor];
+        self.tableView.separatorColor = [UIColor whiteColor];
+    }else{
+        self.tableView.backgroundColor = [UIColor whiteColor];
+        self.tableView.separatorColor = [UIColor grayColor];
+    }
+}
+
 #pragma mark - Setup TableView
 
 - (void)setupTableView {
@@ -141,8 +156,9 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.separatorColor = [UIColor grayColor];
-    self.tableView.backgroundColor = [UIColor whiteColor];
+
+    [self isDarkModeOn];
+
     [self.view addSubview:self.tableView];
 
     NSDictionary *views = @{ @"tableView": self.tableView };
@@ -227,6 +243,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     self.tableSectionCellIdentifiers = rows;
 }
 
+
 #pragma mark - Custom Accessors
 
 - (CGFloat)tableSectionHeaderFontSize {
@@ -259,6 +276,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     return (section == [self numberOfSectionsInTableView:self.tableView] - 1) ? kSettingsSectionFooterHeight : CGFLOAT_MIN;
 }
 
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [[UIView alloc] init];
     headerView.backgroundColor = [UIColor clearColor];
@@ -270,6 +288,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 #else
 		avatar = [[SettingsAvatar alloc] init];
 #endif
+
 		
         [headerView addSubview:avatar];
         
@@ -281,7 +300,11 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
         UILabel *emailLabel = [[UILabel alloc] init];
         emailLabel.translatesAutoresizingMaskIntoConstraints = NO;
         emailLabel.font = [UIFont systemFontOfSize:self.emailLabelFontSize];
-        emailLabel.text = @"you@getmimo.com";
+        
+        User *u = [[Utils sharedInstance] loadUserNeededInformation];
+        
+        emailLabel.text = u.email; //@"you@getmimo.com";
+        
         emailLabel.textColor = [UIColor grayColor];
         [headerView addSubview:emailLabel];
         
@@ -355,19 +378,26 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)configureCell forRowAtIndexPath:(NSIndexPath *)indexPath {
     SettingsTableViewCell *cell = (SettingsTableViewCell *)configureCell;
     
-    cell.contentView.backgroundColor = [UIColor whiteColor];
     cell.activityIndicator.hidden = YES;
 
 	cell.secondaryLabel.hidden = YES;
 	cell.selectionSwitch.hidden = YES;
+    
+    if ([[Utils sharedInstance] isOnDarkMode]) {
+        cell.contentView.backgroundColor = [UIColor blackColor];
+        cell.label.textColor = [UIColor whiteColor];
+    }else{
+        cell.contentView.backgroundColor = [UIColor whiteColor];
+        cell.label.textColor = [UIColor grayColor];
+    }
+    
 	if (indexPath.section == SettingsTableSectionNotification) {
 		
 		if (indexPath.row == SettingsTableSectionNotificationRowSwitch) {
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			cell.selectionSwitch.hidden = NO;
-			BOOL switchOn = NO;
 			
-			[cell.selectionSwitch setOn:switchOn animated:NO];
+			[cell.selectionSwitch setOn:[[Utils sharedInstance] isOnDarkMode] animated:NO];
 			cell.delegate = self;
 		} else if (indexPath.row == SettingsTableSectionNotificationRowTime) {
 			cell.secondaryLabel.hidden = NO;
@@ -395,7 +425,6 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
             cell.label.hidden = YES;
         }
     } else {
-        cell.label.textColor = [UIColor grayColor];
         cell.label.hidden = NO;
     }
 }
@@ -534,6 +563,11 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 	[self.tableView reloadData];
 }
 
+- (void)handleDarkModeNotification:(NSNotification *)notification {
+    [self isDarkModeOn];
+    [self.tableView reloadData];
+}
+
 #pragma mark - Helper
 
 - (void)upgrade {
@@ -554,7 +588,11 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 }
 
 - (void)logout {
-
+    [[Utils sharedInstance] removeUserNeededInformation];
+    
+    LSViewController *ls = [[LSViewController alloc] initWithNibName:@"LSViewController" bundle:nil];
+    [self presentViewController:ls animated:true completion:nil];
+    
 }
 
 - (void)restoreWithCell:(SettingsTableViewCell *)cell {

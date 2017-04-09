@@ -4,6 +4,7 @@
 //
 
 #import "SettingsAvatar.h"
+#import "MimoiOSCodingChallenge-Swift.h"
 
 @interface SettingsAvatar()
 @property BOOL premium;
@@ -63,7 +64,19 @@
 #pragma mark DRAWING -
 
 - (void)drawRect:(CGRect)rect {
-    [self drawAvatarWithFrame:rect];
+    
+    NSString *email = [[Utils sharedInstance] MD5WithString:[[Utils sharedInstance] loadUserNeededInformation].email];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://s.gravatar.com/avatar/%@?s=80", email]];
+    
+    NSData *data = [[NSData alloc] initWithContentsOfURL:url];
+    
+    UIImage *img = [[UIImage alloc] initWithData:data];
+    
+    [img drawInRect:rect];
+
+    
+   // [self drawAvatarWithFrame:rect];
 }
 
 - (void)drawAvatarWithFrame: (CGRect)frame {

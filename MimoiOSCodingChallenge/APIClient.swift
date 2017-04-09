@@ -27,7 +27,7 @@ struct ApiClient {
         self.connection = "Username-Password-Authentication"
         self.serverUrl = "https://mimo-test.auth0.com/"
         self.grant_type = "password"
-        self.scope = "openid"
+        self.scope = "openid profile email"
         if customUrl != nil {
             self.serverUrl = customUrl!
         }

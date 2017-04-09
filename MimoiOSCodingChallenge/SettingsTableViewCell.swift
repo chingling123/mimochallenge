@@ -17,12 +17,14 @@ class SettingsTableViewCell : UITableViewCell {
 	let label = UILabel()
 	let secondaryLabel = UILabel()
 	let activityIndicator = UIActivityIndicatorView()
+
 	private var didSetConstraints = false
 	
 	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		backgroundColor = UIColor.white
-		selectionStyle = .default
+        
+
+        selectionStyle = .default
 		
 		label.font = UIFont.systemFont(ofSize: 14)
 		
@@ -69,7 +71,7 @@ class SettingsTableViewCell : UITableViewCell {
 		selectionStyle = .default
 		label.text = nil
 		secondaryLabel.text = nil
-		selectionSwitch.setOn(false, animated: false)
+		selectionSwitch.setOn(Utils.sharedInstance.isOnDarkMode(), animated: false)
 		delegate = nil
 	}
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User {
+@objc class User:NSObject {
     
     var token_type:String!
     var id_token:String!
@@ -43,7 +43,7 @@ struct User {
             self.email = email
         }
         
-        saveUserNeededInformation(data)
+        Utils.init().saveUserNeededInformation(data)
         
     }
 }

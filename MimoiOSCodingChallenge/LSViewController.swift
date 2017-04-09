@@ -30,7 +30,9 @@ import UIKit
         if checkFields() {
             client.login(emailField.text!, password: passField.text!, completion: { (success, response) in
                 if success == true{
-                     userDefault = User(data: response!)
+                    var temp:JSONDictionary = response!
+                    temp["email"] = self.emailField.text as AnyObject
+                     _ = User(data: temp)
                      self.showSettings()
                 }else{
                     var errorMessage:String?
@@ -51,7 +53,7 @@ import UIKit
         if checkFields() {
             client.signUp(emailField.text!, password: passField.text!, completion: { (success, response) in
                 if success == true{
-                    userDefault = User(data: response!)
+                    _ = User(data: response!)
                     self.showSettings()
                 }else{
                     var errorMessage:String?
